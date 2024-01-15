@@ -1,2 +1,2 @@
 # sales-api
-Golang rest api template
+Golang rest api template from ardan labs learning
