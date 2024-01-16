@@ -126,7 +126,7 @@ metrics-view:
 	expvarmon -ports="$(SERVICE_NAME).$(NAMESPACE).svc.cluster.local:4000" -vars="build,requests,goroutines,errors,panics,mem:memstats.Alloc"
 
 test-endpoint:
-	curl -il $(SERVICE_NAME).$(NAMESPACE).svc.cluster.local:4000/debug/pprof
+	curl -il $(SERVICE_NAME).$(NAMESPACE).svc.cluster.local:3000/test
 
 test-endpoint-local:
-	curl -il localhost:4000/debug/vars
+	curl -il localhost:3000/test
