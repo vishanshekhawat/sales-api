@@ -34,7 +34,7 @@ func run(log *zap.SugaredLogger) error {
 	// -------------------------------------------------------------------------
 	// GOMAXPROCS
 
-	log.Infow("startup", "GOMAXPROCS", runtime.GOMAXPROCS(0), "BUILD", build)
+	log.Infow("startup", "GOMAXPROCS", runtime.GOMAXPROCS(0), "BUILD-", build)
 
 	// -------------------------------------------------------------------------
 
