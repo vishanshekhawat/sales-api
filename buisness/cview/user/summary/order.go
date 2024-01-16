@@ -1,4 +1,4 @@
-package usersummary
+package summary
 
 import "github.com/vishn007/sales-api/buisness/data/order"
 
