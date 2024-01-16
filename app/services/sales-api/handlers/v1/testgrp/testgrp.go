@@ -2,10 +2,12 @@ package testgrp
 
 import (
 	"context"
-	"encoding/json"
 	"errors"
 	"math/rand"
 	"net/http"
+
+	v1 "github.com/vishn007/sales-api/buisness/web/v1"
+	"github.com/vishn007/sales-api/foundation/web"
 )
 
 // Test is our example route.
@@ -16,7 +18,7 @@ func Test(ctx context.Context, w http.ResponseWriter, r *http.Request) error {
 	// Return errors
 
 	if n := rand.Intn(100); n%2 == 0 {
-		return errors.New("UNTRUSTED ERROR")
+		return v1.NewRequestError(errors.New("TRUSTED ERROR"), http.StatusBadRequest)
 	}
 
 	status := struct {
@@ -25,5 +27,5 @@ func Test(ctx context.Context, w http.ResponseWriter, r *http.Request) error {
 		Status: "OK OK",
 	}
 
-	return json.NewEncoder(w).Encode(status)
+	return web.Respond(ctx, w, status, http.StatusOK)
 }
