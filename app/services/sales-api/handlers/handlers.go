@@ -4,6 +4,7 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/jmoiron/sqlx"
 	"github.com/vishn007/sales-api/app/services/sales-api/handlers/v1/testgrp"
 	"github.com/vishn007/sales-api/buisness/web/auth"
 	"github.com/vishn007/sales-api/buisness/web/v1/mid"
@@ -16,6 +17,7 @@ type APIMuxConfig struct {
 	Shutdown chan os.Signal
 	Log      *zap.SugaredLogger
 	Auth     *auth.Auth
+	DB       *sqlx.DB
 }
 
 func APIMux(cfg APIMuxConfig) *web.App {
