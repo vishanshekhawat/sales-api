@@ -3,6 +3,8 @@ package testgrp
 import (
 	"context"
 	"encoding/json"
+	"errors"
+	"math/rand"
 	"net/http"
 )
 
@@ -12,7 +14,10 @@ func Test(ctx context.Context, w http.ResponseWriter, r *http.Request) error {
 	// Validate the data
 	// Call into the business layer
 	// Return errors
-	// Handle OK response
+
+	if n := rand.Intn(100); n%2 == 0 {
+		return errors.New("UNTRUSTED ERROR")
+	}
 
 	status := struct {
 		Status string
