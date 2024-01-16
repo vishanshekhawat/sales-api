@@ -112,6 +112,10 @@ dev-describe-sales:
 run-local:
 	go run app/services/sales-api/main.go | go run app/tooling/logfmt/main.go -service=$(SERVICE_NAME)
 
+
+run-local-1:
+	go run app/services/sales-api/main.go 
+
 run-local-help:
 	go run app/services/sales-api/main.go --help
 
