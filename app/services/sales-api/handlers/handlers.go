@@ -1,11 +1,11 @@
 package handlers
 
 import (
-	"encoding/json"
 	"net/http"
 	"os"
 
 	"github.com/dimfeld/httptreemux/v5"
+	"github.com/vishn007/sales-api/app/services/sales-api/handlers/v1/testgrp"
 	"go.uber.org/zap"
 )
 
@@ -18,17 +18,7 @@ type APIMuxConfig struct {
 func APIMux(cfg APIMuxConfig) http.Handler {
 	mux := httptreemux.NewContextMux()
 
-	h := func(w http.ResponseWriter, r *http.Request) {
-		status := struct {
-			Status string
-		}{
-			Status: "OK",
-		}
-
-		json.NewEncoder(w).Encode(status)
-	}
-
-	mux.Handle(http.MethodGet, "/test", h)
+	mux.Handle(http.MethodGet, "/test", testgrp.Test)
 
 	return mux
 }
