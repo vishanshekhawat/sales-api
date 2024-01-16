@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/vishn007/sales-api/app/services/sales-api/handlers/v1/testgrp"
+	"github.com/vishn007/sales-api/buisness/web/v1/mid"
 	"github.com/vishn007/sales-api/foundation/web"
 	"go.uber.org/zap"
 )
@@ -17,7 +18,7 @@ type APIMuxConfig struct {
 
 func APIMux(cfg APIMuxConfig) *web.App {
 
-	app := web.NewApp(cfg.Shutdown)
+	app := web.NewApp(cfg.Shutdown, mid.Logger(cfg.Log))
 
 	app.Handle(http.MethodGet, "/test", testgrp.Test)
 
