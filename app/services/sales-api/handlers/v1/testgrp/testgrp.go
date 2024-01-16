@@ -15,7 +15,6 @@ func Test(ctx context.Context, w http.ResponseWriter, r *http.Request) error {
 
 	// Validate the data
 	// Call into the business layer
-	// Return errors
 
 	if n := rand.Intn(100); n%2 == 0 {
 		return v1.NewRequestError(errors.New("TRUSTED ERROR"), http.StatusBadRequest)
