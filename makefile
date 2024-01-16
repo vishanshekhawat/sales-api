@@ -66,8 +66,6 @@ dev-up: dev-up-local
 		telepresence --context=kind-$(KIND_CLUSTER) helm install
 		telepresence --context=kind-$(KIND_CLUSTER) connect
 
-dev-down-local:
-	kind delete cluster --name $(KIND_CLUSTER)
 
 dev-down:
 	telepresence quit -s
@@ -123,3 +121,6 @@ tidy:
 
 metrics-view-local:
 	expvarmon -ports="localhost:4000" -vars="build,requests,goroutines,errors,panics,mem:memstats.Alloc"
+
+test-endpoint:
+	curl -il sales-api.sales-system.svc.cluster.local:4000/debug/pprof
