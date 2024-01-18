@@ -35,7 +35,6 @@ func APIMux(cfg APIMuxConfig) *web.App {
 	usrCore := user.NewCore(userdb.NewStore(cfg.Log, cfg.DB))
 
 	ugh := usergrp.New(usrCore)
-
 	app.Handle(http.MethodGet, "/users", ugh.Query)
 
 	return app
